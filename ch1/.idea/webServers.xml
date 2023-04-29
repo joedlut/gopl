@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3589f6cf-c614-48bb-a74d-736baae0e869" name="devcloud">
+        <fileTransfer rootFolder="/home/joedlut/msrd" accessType="SFTP" host="192.168.88.133" port="22" sshConfigId="d01f13ee-9d05-4b43-b2fe-dca1494c60b8" sshConfig="joedlut@192.168.88.133:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

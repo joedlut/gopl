@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="88365529-5e1b-4eb0-82ab-867d369eaa4c" name="devcloud">
+        <fileTransfer rootFolder="/root/msrd/go_backend/backendservice" accessType="SFTP" host="9.134.77.227" port="36000" sshConfigId="4f0e3753-2ab4-4fb7-963f-e4f4ca62e8ab" sshConfig="root@9.134.77.227:36000 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

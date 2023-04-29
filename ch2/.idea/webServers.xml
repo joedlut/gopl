@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="55f08a8d-23f3-4427-bd1f-73cdf33bec38" name="开发机">
+        <fileTransfer rootFolder="/home/joedlut/msrd/go_backend" accessType="SFTP" host="192.168.88.136" port="22" sshConfigId="d8c1c2e9-7596-4ea5-bd1a-121c719894e4" sshConfig="joedlut@192.168.88.136:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
