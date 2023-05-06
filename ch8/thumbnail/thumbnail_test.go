@@ -16,6 +16,7 @@ func makeThumbnails(filenames []string) {
 	}
 }
 
+// 错误的写法
 func makeThumbnails2(filenames []string) {
 	for _, f := range filenames {
 		//incorrect
@@ -51,6 +52,7 @@ func makeThumbnails4(filenames []string) error {
 
 	for range filenames {
 		if err := <-errors; err != nil {
+			//上面的循环goroutine还没有执行完，有一个报错就返回
 			return err // NOTE: incorrect: goroutine leak!
 		}
 	}
@@ -75,6 +77,7 @@ func makeThumbnails5(filenames []string) (thumbfiles []string, err error) {
 
 	for range filenames {
 		it := <-ch
+		//有一个报错就返回nil
 		if it.err != nil {
 			return nil, it.err
 		}
@@ -89,6 +92,7 @@ func makeThumbnails6(filenames <-chan string) int64 {
 
 	//goroutine计数器
 	var wg sync.WaitGroup // number of working goroutines
+
 	for f := range filenames {
 		//在goroutine worker执行前执行
 		wg.Add(1)
