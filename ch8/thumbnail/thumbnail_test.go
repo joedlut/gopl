@@ -99,6 +99,7 @@ func makeThumbnails6(filenames <-chan string) int64 {
 		go func(f string) {
 			defer wg.Done()
 			thumb, err := thumbnail.ImageFile(f)
+			//有一个报错同样就直接返回nil
 			if err != nil {
 				log.Println(err)
 				return
