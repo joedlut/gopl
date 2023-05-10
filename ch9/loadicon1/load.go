@@ -1,11 +1,12 @@
-package load
+package main
 
 import (
+	"fmt"
 	"image"
 	"sync"
 )
 
-//var mu sync.Mutex
+// var mu sync.Mutex
 var loadIconsOnce sync.Once
 
 var icons map[string]image.Image
@@ -16,8 +17,11 @@ func loadIcons() {
 	icons["2.png"] = loadIcon("2.png")
 }
 
-//test
 func Icon(name string) image.Image {
 	loadIconsOnce.do(loadIcons)
 	return icons[name]
+}
+
+func main() {
+	fmt.Println("test")
 }
