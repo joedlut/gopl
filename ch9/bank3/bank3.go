@@ -9,7 +9,8 @@ var (
 
 func Deposit(amount int) {
 	mu.Lock()
-	balance += amount
+	//balance += amount
+	deposit(amount)
 	mu.Unlock()
 }
 
@@ -25,6 +26,7 @@ func WithDraw(amount int) bool {
 	mu.Lock()
 	defer mu.Unlock()
 	//Deposit(-amount)
+	deposit(amount)
 	if Balance() < 0 {
 		Deposit(amount)
 		return false
