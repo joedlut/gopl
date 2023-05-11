@@ -47,10 +47,12 @@ func (memo *Memo) Get(key string) (interface{}, error) {
 		memo.cache[key] = e
 		memo.mu.Unlock()
 		e.res.value, e.res.err = memo.f(key)
+		//通过关闭通道来实现广播
 		close(e.ready)
 	} else {
 		memo.mu.Unlock()
+		//关闭e.ready前一直阻塞
 		<-e.ready
 	}
-	return res.value, res.err
+	return e.res.value, e.res.err
 }
