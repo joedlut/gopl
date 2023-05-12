@@ -42,9 +42,11 @@ func (memo *Memo) Get(key string) (interface{}, error) {
 	memo.mu.Lock()
 	e := memo.cache[key]
 	if e == nil {
+		//对key的第一次访问
 		e = &entry{ready: make(chan struct{})}
 		memo.cache[key] = e
 		memo.mu.Unlock()
+		//e.res.value,e.res.err被多个goroutine 共享
 		e.res.value, e.res.err = memo.f(key)
 		//通过关闭通道来实现广播
 		close(e.ready)
