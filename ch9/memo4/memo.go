@@ -38,7 +38,6 @@ func New(f Func) *Memo {
 	return &Memo{f: f, cache: make(map[string]*entry)}
 }
 
-// 并发不安全
 func (memo *Memo) Get(key string) (interface{}, error) {
 	memo.mu.Lock()
 	e := memo.cache[key]
