@@ -10,6 +10,8 @@ import (
 
 func TestMemoSingle(t *testing.T) {
 	m := New(httpGetBody)
+	//必须记得关闭
+	defer m.Close()
 	incomingURLS := []string{"https://www.baidu.com", "https://sina.cn", "https://www.bilibili.com/", "https://sina.cn", "https://www.baidu.com", "https://news.qq.com/", "https://news.qq.com/"}
 
 	for _, url := range incomingURLS {
@@ -24,6 +26,8 @@ func TestMemoSingle(t *testing.T) {
 
 func TestMemoMulti(t *testing.T) {
 	m := New(httpGetBody)
+	//必须记得关闭
+	defer m.Close()
 	var n sync.WaitGroup
 
 	incomingURLS := []string{"https://www.baidu.com", "https://sina.cn", "https://www.bilibili.com/", "https://sina.cn", "https://www.baidu.com", "https://news.qq.com/", "https://news.qq.com/"}

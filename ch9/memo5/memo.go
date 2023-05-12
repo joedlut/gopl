@@ -43,6 +43,7 @@ type Func func(key string) (interface{}, error)
 
 func New(f Func) *Memo {
 	memo := &Memo{requests: make(chan request)}
+	//调用函数 f
 	go memo.server(f)
 	return memo
 }
@@ -67,9 +68,12 @@ func (memo *Memo) server(f Func) {
 		e := cache[req.key]
 		//第一次请求key
 		if e == nil {
-			e := &entry{ready: make(chan struct{})}
+			//e := &entry{ready: make(chan struct{})}  fix
+			e = &entry{ready: make(chan struct{})}
 			cache[req.key] = e
 			//调用f(key)
+			//fmt.Println("begin to call e.call")
+			//fmt.Println(e)
 			go e.call(f, req.key)
 		}
 		go e.deliver(req.response)
@@ -78,6 +82,7 @@ func (memo *Memo) server(f Func) {
 
 func (e *entry) call(f Func, key string) {
 	//执行fkey
+	//fmt.Println("call f ")
 	e.res.value, e.res.err = f(key)
 	//广播数据已经准备好
 	close(e.ready)
