@@ -41,5 +41,4 @@ func TestMemoMulti(t *testing.T) {
 		}(url)
 	}
 	n.Wait()
-
 }

@@ -11,7 +11,8 @@ type result struct {
 }
 
 type request struct {
-	key      string
+	key string
+	//发送
 	response chan<- result
 }
 
@@ -24,7 +25,8 @@ type Memo struct {
 }
 
 type entry struct {
-	res   result
+	res result
+	//res准备好后关闭该通道
 	ready chan struct{}
 }
 
@@ -51,6 +53,7 @@ func (memo *Memo) Get(key string) (interface{}, error) {
 	//创建一个响应通道，放到request里面
 	memo.requests <- request{key, response}
 
+	//阻塞，直到response准备好数据
 	res := <-response
 	return res.value, res.err
 }
