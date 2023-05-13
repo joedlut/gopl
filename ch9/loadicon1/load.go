@@ -24,4 +24,5 @@ func Icon(name string) image.Image {
 
 func main() {
 	fmt.Println("test")
+	Icon("test")
 }
