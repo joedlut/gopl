@@ -1,5 +1,7 @@
 package intlist
 
+//nil 代表空列表
+
 type IntList struct {
 	Value int
 	Next  *IntList
