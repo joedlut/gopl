@@ -1,6 +1,7 @@
 package word
 
 import (
+	"fmt"
 	"math/rand"
 	"testing"
 	"time"
@@ -22,7 +23,7 @@ func TestRandomPalindrome(t *testing.T){
 	t.Logf("random seed %d",rng)
 	for i:=0;i<1000;i++{
 		p := randomPalindrome(rng)
-		//fmt.Println(p)
+		fmt.Println(p)
 		if !IsPalindrome(p){
 			t.Errorf("IsPalindrome(%q)=false",p)
 		}
